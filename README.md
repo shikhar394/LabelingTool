@@ -7,5 +7,5 @@ Only supports working with a dictionary currently.
 ## TO RUN
 - Set up config file (label_config.cfg)
 - Launch script using ./run_script.sh (script using label_config.cfg)
-- Goto localhost:5000/<username>/<range>
+- Goto localhost:5000/username/range
   - example: localhost:5000/shikhar/1-100
