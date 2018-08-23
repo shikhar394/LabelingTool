@@ -19,7 +19,7 @@ print("""
   example:
   localhost:5000/shikhar/1-20
   """)
-  
+
 if len(sys.argv) < 2:
     exit("Usage:python supervising.py label_config.cfg")
 
@@ -80,7 +80,7 @@ def GetInput(username, range):
       WriteThread.start()
       ResponseCount = 0
       
-    return redirect('/index/'+username+'/'+range)
+    return redirect('/'+username+'/'+range)
 
   return render_template("sentimentanalysis.html", 
       AllData={k:ProperData[k] for k in list(ProperData.keys())[LowRange-1:HighRange]}, 
