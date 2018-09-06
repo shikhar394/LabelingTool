@@ -3,21 +3,9 @@
     <h1>Username: {{ User }}</h1>
     {% for ID, ParentDict in AllData.items() %}
       <h3>ID: {{ ID }}</h3>
-      <p>Text Marked: {{ AllData[ID]['MarkedTextBy'] }}</p>
       <p>Text+Image Marked: {{ AllData[ID]['MarkedTextImgBy'] }}</p>
-      {% if User not in AllData[ID]['MarkedTextBy'] %}
-      
-        <h2>Text</h2>
-        <div><p> {{ AllData[ID]["Text"] }}</p></div>
-        <form action="{{url_for('GetInput', username=User, range=Range)}}" method="post">
-
-          {{ Form.SentimentForm }}
-          {{ Form.ID(value=ID) }}
-          {{ Form.Type(value='Text')}}
-          {{ Form.submit }}
-
-        </form>
-      {% endif %}
+      <p>Text Marked: {{ AllData[ID]['MarkedTextImgBy'] }}</p>
+      <p>Category Marked: {{ AllData[ID]['Category'] }}</p>
       {% if User not in AllData[ID]['MarkedTextImgBy'] %}
         <div></div>
         <h3>Image + Text</h3>
@@ -25,10 +13,13 @@
         <div><p> {{ AllData[ID]["Text"] }}</p></div>
         <div></div>
         <form action="{{url_for('GetInput', username=User, range=Range)}}" method="post">
-          {{ Form.SentimentForm }}
+          <p>Text Sentiment</p>
+          {{ Form.TextSentimentForm }}
+          <p>Image + Text Sentiment</p>
+          {{ Form.ImageTextSentimentForm }}
+          <p>Ad Category</p>
           {{ Form.CategoryForm }}
           {{ Form.ID(value=ID) }}
-          {{ Form.Type(value='ImageText')}}
           {{ Form.submit }}
       {% endif %}
       </form>

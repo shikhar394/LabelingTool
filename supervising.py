@@ -40,14 +40,14 @@ DBNAME = config['POSTGRES']['DBNAME']
 USER = config['POSTGRES']['USER']
 PASSWORD = config['POSTGRES']['PASSWORD']
 DBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME, USER, PASSWORD)
-#connection = psycopg2.connect(DBAuthorize)
-#cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+connection = psycopg2.connect(DBAuthorize)
+cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 app = Flask(__name__)
 
 SentimentOptions = ((-2, 'Very Negative'), (-1, 'Negative'), (0, 'Neutral'), (1, 'Positive'), (2, 'Very Positive'))
 
-CategoryOptions = ((0, 'Donate'), (1, 'Inform'), (2, 'Connect'), (3, 'Move'))
+CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), ('Connect', 'Connect'), ('Move', 'Move'))
 
 ResponseCount = 0
 
@@ -57,50 +57,11 @@ MAINRUNNING = True
 ThreadQueue = queue.Queue()
 
 class Senitments(Form):
-  SentimentForm = RadioField("Sentiment", choices=SentimentOptions)
-  CategoryForm = SelectMultipleField("Category", choices=CategoryOptions)
+  TextSentimentForm = RadioField("TextSentiment", choices=SentimentOptions)
+  ImageTextSentimentForm = RadioField("ImageTextSentiment", choices=SentimentOptions)
+  CategoryForm = RadioField("Category", choices=CategoryOptions)
   ID = HiddenField("ID")
-  Type = HiddenField("Type")
   submit = SubmitField("Send")
-
-
-# class DBInsertBackground(threading.Thread):
-#   def __init__(self, interval=1):
-#     threading.Thread.__init__(self)
-#     self.interval = interval
-
-
-
-#   def run(self):
-#     try:
-#       with SSHTunnelForwarder(
-#         ('ccs1usr.engineering.nyu.edu', 22),
-#         ssh_username='ss9131',
-#         ssh_password='changemeNYU',
-#         remote_bind_address=('localhost', 5432)) as server:
-
-#         server.start()
-#         print("Server connected")
-#         connection = psycopg2.connect(DBAuthorize)
-#         cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-#         while MAINRUNNING:
-#           ResponseToInsert = ThreadQueue.get()
-#           #TODO Write insertion script. 
-#           ad_id = ResponseToInsert['ID']
-#           sentiment_type = ResponseToInsert['Type']
-#           type_id = label_type_DBdict[sentiment_type.lower()]
-#           sentiment = ResponseToInsert['SentimentForm']
-#           user_id = labllers_DBdict[Username.lower()]
-#           print(ad_id, type_id, sentiment, user_id)
-
-#     except:
-#       print("Connection failed")
-    
-        
-
-# class SentimentList(Form):
-#   AllSentiments = FieldList(FormField(Senitments), min_entries=2, max_entries=10)
   
 app.config.update(dict(
     SECRET_KEY= config['KEYS']['SECRET_KEY'],
@@ -108,69 +69,9 @@ app.config.update(dict(
 ))
 
 label_type_DBdict = {}
-labllers_DBdict = {}
+labellers_DBdict = {}
+categories_DBdict = {}
 
-#InitializeDBVals()
-
-@app.route('/<username>/<range>', methods=['get', 'post'])
-def GetInput(username, range):
-  global ResponseCount
-  form = Senitments()
-
-  LowRange = int(range.split("-")[0].strip())
-  HighRange = int(range.split('-')[-1].strip())
-
-  if request.method == 'POST':
-    username=username.lower()
-    Response = request.form.to_dict()
-    pprint(Response)
-
-    #Response Type set manually in jinja2 to distinguish type of response. 
-    if Response['Type'] == 'Text':
-      ProperData[Response['ID']]['MarkedTextBy'].update({username: Response['SentimentForm']})
-    #ProperData[Response['ID']]['MarkedBy'] = list(ProperData[Response['ID']]['MarkedBy'])
-    elif Response['Type'] == 'ImageText':
-      ProperData[Response['ID']]['MarkedTextImgBy'].update({username: Response['SentimentForm']})
-      if 'Category' not in ProperData[Response['ID']]: 
-        ProperData[Response['ID']]['Category'] = {}
-      ProperData[Response['ID']]['Category'].update({username: Response['CategoryForm']})
-
-
-    ResponseCount += 1
-    if ResponseCount == ResponseBackup:
-      #Overwrites original file. However, since the original dictionary is just being updated, no data is lost. 
-      flash("Backing up responses.")
-      BackupThread = threading.Thread(target=UpdateJSON, args=(ProperData, ))
-      BackupThread.start()
-      ResponseCount = 0
-      
-    return redirect('/'+username+'/'+range)
-
-  return render_template("sentimentanalysis.html", 
-      AllData={k:ProperData[k] for k in list(ProperData.keys())[LowRange-1:HighRange]}, 
-      Form=form, 
-      User=username, 
-      Range=range)
-
-
-
-
-
-def UpdateJSON(Data):
-  with open(TEXTFILE, 'w') as f:
-    json.dump(Data, f, indent=4)
-
-
-
-
-
-def WriteToDB(Response, Username):
-  ad_id = Response['ID']
-  sentiment_type = Response['Type']
-  type_id = label_type_DBdict[sentiment_type.lower()]
-  sentiment = Response['SentimentForm']
-  user_id = labllers_DBdict[Username.lower()]
-  print(ad_id, type_id, sentiment, user_id)
 
 
 
@@ -184,14 +85,120 @@ def InitializeDBVals():
   query = 'select * from labellers'
   cursor.execute(query)
   for row in cursor:
-    labllers_DBdict[row['name']] = row['id']
+    labellers_DBdict[row['name']] = row['id']
+
+  query = 'select * from ad_categories'
+  cursor.execute(query)
+  for row in cursor:
+    categories_DBdict[row['category']] = row['id']
 
 
 
 
 
-atexit.register(UpdateJSON, Data=ProperData)
+@app.route('/<username>/<range>', methods=['get', 'post'])
+def GetInput(username, range):
+  global ResponseCount
+  form = Senitments()
+
+  LowRange = int(range.split("-")[0].strip())
+  HighRange = int(range.split('-')[-1].strip())
+
+  if request.method == 'POST':
+    username=username.lower()
+    Response = request.form.to_dict()
+    pprint(Response)
+    WriteToDB(Response, username)
+
+    ProperData[Response['ID']]['MarkedTextBy'].update({username: Response['TextSentimentForm']})
+    ProperData[Response['ID']]['MarkedTextImgBy'].update({username: Response['ImageTextSentimentForm']})
+    ProperData[Response['ID']]['Category'].update({username: Response['CategoryForm']})
+
+    ResponseCount += 1
+    if ResponseCount == ResponseBackup:
+      #Overwrites original file. However, since the original dictionary is just being updated, no data is lost. 
+      BackupData()
+      ResponseCount=0
+      
+    return redirect('/'+username+'/'+range)
+
+  return render_template("sentimentanalysis.html", 
+      AllData={k:ProperData[k] for k in list(ProperData.keys())[LowRange-1:HighRange]}, 
+      Form=form, 
+      User=username, 
+      Range=range)
+
+
+
+
+
+def BackupData():
+  BackupThread = threading.Thread(target=UpdateJSON)
+  BackupThread.start()
+
+
+
+
+def UpdateJSON():
+  with open(TEXTFILE, 'w') as f:
+    json.dump(ProperData, f, indent=4)
+
+
+
+
+
+def WriteToDB(Response, Username):
+  ad_id = Response['ID']
+  category = Response['CategoryForm']
+  TextSentiment = Response['TextSentimentForm']
+  ImageTextSentiment = Response['ImageTextSentimentForm']
+
+  if Username not in labellers_DBdict:
+    labellers_DBdict[Username] = max(labellers_DBdict.values())+1
+    InsertNewUserQuery = "insert into labellers (name) values (%s)" % (Username, )
+    ThreadQueue.put(InsertNewUserQuery)
+  
+  ad_category_id = categories_DBdict[category]
+  user_id = labellers_DBdict[Username]
+  TextLabelID = label_type_DBdict['text']
+  ImageTextLabelID = label_type_DBdict['text_image']
+
+  InsertSentimentQuery = """
+    INSERT into sentiments (ad_id, labeller_id, sentiment, data_type)
+    VALUES (%s, %s, %s, %s), (%s, %s, %s, %s) """ % (
+    ad_id, user_id, TextSentiment, TextLabelID, ad_id, user_id, ImageTextSentiment, ImageTextLabelID)
+
+  print("Sentiment Query", InsertSentimentQuery)
+
+  ThreadQueue.put(InsertSentimentQuery)
+
+  InsertCategoryQuery = """
+    INSERT into label_ad_categories (ad_id, labeller_id, category_id)
+    VALUES (%s, %s, %s) """ % (ad_id, user_id, ad_category_id)
+    
+  ThreadQueue.put(InsertCategoryQuery)
+
+  print("Category Query", InsertCategoryQuery)
+
+  InsertValueThread = threading.Thread(target=ThreadDBQuery, args=(ThreadQueue, ))
+  InsertValueThread.start()
+
+
+
+
+
+def ThreadDBQuery(ThreadQueue):
+  while ThreadQueue:
+    Query = ThreadQueue.get()
+    print("working on: ", Query)
+    cursor.execute(Query)
+    cursor.commit()
+
+
+
 
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  atexit.register(UpdateJSON)
+  InitializeDBVals()
+  app.run(host='0.0.0.0', port=80)
