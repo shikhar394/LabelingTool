@@ -1,5 +1,4 @@
 import atexit
-import html
 import json
 import os
 import re
@@ -42,12 +41,12 @@ PASSWORD = config['POSTGRES']['PASSWORD']
 DBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME, USER, PASSWORD)
 connection = psycopg2.connect(DBAuthorize)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
+print("Connected to DB")
 app = Flask(__name__)
 
 SentimentOptions = ((-2, 'Very Negative'), (-1, 'Negative'), (0, 'Neutral'), (1, 'Positive'), (2, 'Very Positive'))
 
-CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), ('Connect', 'Connect'), ('Move', 'Move'))
+CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'))
 
 ResponseCount = 0
 
@@ -123,7 +122,7 @@ def GetInput(username, range):
     return redirect('/'+username+'/'+range)
 
   return render_template("sentimentanalysis.html", 
-      AllData={k:ProperData[k] for k in list(ProperData.keys())[LowRange-1:HighRange]}, 
+      AllData={k:ProperData[k] for k in sorted(list(ProperData.keys()))[LowRange-1:HighRange]}, 
       Form=form, 
       User=username, 
       Range=range)
@@ -192,7 +191,10 @@ def ThreadDBQuery(ThreadQueue):
     Query = ThreadQueue.get()
     print("working on: ", Query)
     cursor.execute(Query)
-    cursor.commit()
+    connection.commit()
+
+
+
 
 
 
@@ -200,5 +202,6 @@ def ThreadDBQuery(ThreadQueue):
 
 if __name__ == "__main__":
   atexit.register(UpdateJSON)
+  atexit.register(connection.close)
   InitializeDBVals()
-  app.run(host='0.0.0.0', port=80)
+  app.run(host='0.0.0.0', port=5000)
