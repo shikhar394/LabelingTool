@@ -26,6 +26,7 @@
         <div></div>
         <form action="{{url_for('GetInput', username=User, range=Range)}}" method="post">
           {{ Form.SentimentForm }}
+          {{ Form.CategoryForm }}
           {{ Form.ID(value=ID) }}
           {{ Form.Type(value='ImageText')}}
           {{ Form.submit }}
