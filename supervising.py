@@ -154,7 +154,7 @@ def WriteToDB(Response, Username):
 
   if Username not in labellers_DBdict:
     labellers_DBdict[Username] = max(labellers_DBdict.values())+1
-    InsertNewUserQuery = "insert into labellers (name) values (%s)" % (Username, )
+    InsertNewUserQuery = "insert into labellers (name) values ('%s')" % (Username, )
     ThreadQueue.put(InsertNewUserQuery)
   
   ad_category_id = categories_DBdict[category]
