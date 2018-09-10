@@ -122,7 +122,7 @@ def GetInput(username, range):
     return redirect('/'+username+'/'+range)
 
   return render_template("sentimentanalysis.html", 
-      AllData={k:ProperData[k] for k in sorted(list(ProperData.keys()))[LowRange-1:HighRange]}, 
+      AllData={k:ProperData[k] for k in list(ProperData.keys())[LowRange-1:HighRange] if 'ImageURL' in ProperData[k]}, 
       Form=form, 
       User=username, 
       Range=range)

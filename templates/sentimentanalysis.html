@@ -3,9 +3,6 @@
     <h1>Username: {{ User }}</h1>
     {% for ID, ParentDict in AllData.items() %}
       <h3>ID: {{ ID }}</h3>
-      <p>Text+Image Marked: {{ AllData[ID]['MarkedTextImgBy'] }}</p>
-      <p>Text Marked: {{ AllData[ID]['MarkedTextImgBy'] }}</p>
-      <p>Category Marked: {{ AllData[ID]['Category'] }}</p>
       {% if User not in AllData[ID]['MarkedTextImgBy'] %}
         <div></div>
         <h3>Image + Text</h3>
