@@ -115,11 +115,7 @@ def GetInput(username, range):
     ProperData[Response['ID']]['MarkedTextImgBy'].update({username: Response['ImageTextSentimentForm']})
     ProperData[Response['ID']]['Category'].update({username: Response['CategoryForm']})
 
-    ResponseCount += 1
-    if ResponseCount == ResponseBackup:
-      #Overwrites original file. However, since the original dictionary is just being updated, no data is lost. 
-      BackupData()
-      ResponseCount=0
+    BackupData()
       
     return redirect('/'+username+'/'+range)
 
