@@ -35,14 +35,11 @@ TEXTFILE = config['LOCATION']['TEXTFILE']
 ResponseBackup = int(config['BACKUP']['RESPONSE'])
 
 HOST = config['POSTGRES']['HOST']
-DBNAME_ADS = config['POSTGRES']['DBNAME_ADS']
 DBNAME_LABELS = config['POSTGRES']['DBNAME_LABELS']
 USER = config['POSTGRES']['USER']
 PASSWORD = config['POSTGRES']['PASSWORD']
-AdsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME_ADS, USER, PASSWORD)
 LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME_LABELS, USER, PASSWORD)
 connection = psycopg2.connect(LabelsDBAuthorize)
-#cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor) 
 
 print("Connected to DB")
