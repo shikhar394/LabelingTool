@@ -2,8 +2,11 @@
   <body>
     <h1>Username: {{ User }}</h1>
     {% for ID, ParentDict in AllData.items() %}
-      <h3>ID: {{ ID }}</h3>
+      {% if User in AllData[ID]['MarkedTextImgBy'] %}
+      <h3>ID: {{ ID }} MARKED</h3>
+      {% endif %}
       {% if User not in AllData[ID]['MarkedTextImgBy'] %}
+        <h3>ID: {{ ID }}</h3>
         <div></div>
         <h3>Image + Text</h3>
         <div><img src = {{ AllData[ID]['ImageURL'] }}></div>
