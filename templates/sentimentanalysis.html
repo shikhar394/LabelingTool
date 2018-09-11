@@ -3,10 +3,16 @@
     <h1>Username: {{ User }}</h1>
     {% for ID, ParentDict in AllData.items() %}
       {% if User in AllData[ID]['MarkedTextImgBy'] %}
-      <h3>ID: {{ ID }} MARKED</h3>
+        <h3>ID: {{ ID }} MARKED BY: </h3>
+        {% for LabelUsers in AllData[ID]['MarkedTextImgBy'].keys() %}
+          <p>{{ LabelUsers }}</p>
+        {% endfor %}
       {% endif %}
       {% if User not in AllData[ID]['MarkedTextImgBy'] %}
-        <h3>ID: {{ ID }}</h3>
+        <h3>ID: {{ ID }} MARKED BY: </h3>
+        {% for LabelUsers in AllData[ID]['MarkedTextImgBy'].keys() %}
+          <p>{{ LabelUsers }}</p>
+        {% endfor %}
         <div></div>
         <h3>Image + Text</h3>
         <div><img src = {{ AllData[ID]['ImageURL'] }}></div>
