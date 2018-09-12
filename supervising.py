@@ -29,7 +29,6 @@ if len(sys.argv) < 2:
 config = configparser.ConfigParser()
 config.read(sys.argv[1])
 
-#TODO Decide if per user web page and writes to dict with ID
 
 TEXTFILE = config['LOCATION']['TEXTFILE']
 ResponseBackup = int(config['BACKUP']['RESPONSE'])
@@ -121,7 +120,7 @@ def GetInput(username, range):
 
   return render_template("sentimentanalysis.html", 
       AllData={k:ProperData[k] for k in ProperData.keys()}, 
-      SortedIDs = [k for k in sorted(list(ProperData.keys()))[LowRange-1:HighRang]],
+      SortedIDs = [k for k in sorted(list(ProperData.keys()))[LowRange-1:HighRange]],
       Form=form, 
       User=username, 
       Range=range)
@@ -161,15 +160,11 @@ def WriteToDB(Response, Username):
   ImageTextSentimentID = label_type_DBdict[ImageTextSentiment]
   CategoryID = label_type_DBdict[category]
 
-  print(TextSentimentID, ImageTextSentimentID, CategoryID)
-
   InsertSentimentQuery = """
     INSERT into labels (user_id, ad_id, label_value_id)
     VALUES (%s, %s, %s), (%s, %s, %s), (%s, %s, %s)""" % (
     user_id, ad_id, TextSentimentID, user_id, ad_id, ImageTextSentimentID,
     user_id, ad_id, CategoryID)
-
-  print("Sentiment Query", InsertSentimentQuery)
 
   ThreadQueue.put(InsertSentimentQuery)
 

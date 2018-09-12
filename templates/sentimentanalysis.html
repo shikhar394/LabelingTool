@@ -6,10 +6,10 @@
         <h3>ID: {{ ID }} </h3>
       {% endif %}
       {% if User not in AllData[ID]['MarkedTextImgBy'] %}
-        <h3>ID: {{ ID }} MARKED BY: </h3>
+        <h3>ID: {{ ID }} </h3>
         <div></div>
         <h3>Image + Text</h3>
-        <div><img src = {{ AllData[ID]['ImageURL'] }}></div>
+        <div><img src = {{ AllData[ID]['ImageURL'] }} width='600' height='500'></div>
         <div><p> {{ AllData[ID]["Text"] }}</p></div>
         <div></div>
         <form action="{{url_for('GetInput', username=User, range=Range)}}" method="post">
