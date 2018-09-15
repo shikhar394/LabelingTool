@@ -88,8 +88,6 @@ labellers_DBdict = {}
 categories_DBdict = {}
 ProperData = json.load(open(TEXTFILE))
 AllUserMarkedAds = json.load(open(ALLADRECORD))
-print("Global scope")
-pprint(AllUserMarkedAds)
 AllAds = {k:ProperData[k] for k in ProperData.keys() if ProperData[k]["ImageURL"]}
 SortedIDs = [k for k in sorted(list(AllAds.keys()))]
 
@@ -115,13 +113,10 @@ def InitializeDBVals():
 @app.route('/<username>/', methods=['get', 'post'])
 def RedirectFirstPage(username):
   global AllUserMarkedAds
-  print(username)
   username=username.lower()
-  print("In original url", AllUserMarkedAds)
   if username not in AllUserMarkedAds:
     AllUserMarkedAds[username] = []
   AdMarkedCount = GetUserMakedCount(username)
-  print(username)
   return redirect(url_for('GetInput', username=username, ID=SortedIDs[AdMarkedCount],
       AdMarkedCount=AdMarkedCount))
 
@@ -133,7 +128,6 @@ def RedirectFirstPage(username):
 def GetInput(username, ID, AdMarkedCount):
   form = Senitments()
   username=username.lower()
-  print("Gets here")
 
   if request.method == 'POST':
     Response = request.form.to_dict(flat=False)
@@ -182,8 +176,6 @@ def BackupData():
 
 
 def UpdateJSON():
-  print("UpdateJSON writing to", ALLADRECORD)
-  pprint(AllUserMarkedAds)
   with open(ALLADRECORD, 'w') as f:
     json.dump(AllUserMarkedAds, f, indent=4)
   with open(TEXTFILE, 'w') as f:
@@ -202,8 +194,8 @@ def WriteToDB(Response, Username):
 
   if Username not in labellers_DBdict:
     labellers_DBdict[Username] = max(labellers_DBdict.values())+1
-    InsertNewUserQuery = "insert into users (username) values ('%s')" % (Username, )
-    ThreadQueue.put(InsertNewUserQuery)
+    InsertNewUserQuery = "insert into users (username) values (%s)"
+    ThreadQueue.put((InsertNewUserQuery, (Username,)))
   
   user_id = labellers_DBdict[Username]
   TextSentimentID = label_type_DBdict[TextSentiment]
@@ -214,7 +206,6 @@ def WriteToDB(Response, Username):
 
   for IDToInsert in ArgIDToInsert:
     SentimentQueryArgs.extend([user_id, ad_id, IDToInsert]) 
-    print(SentimentQueryArgs)
 
   QueryHolders = ["(%s, %s, %s)"] * len(ArgIDToInsert)
   QueryHolders = ','.join(QueryHolders)
@@ -236,8 +227,9 @@ def ThreadDBQuery(ThreadQueue):
   while ThreadQueue:
     Query = ThreadQueue.get()
     InsertSentimentQuery, SentimentQueryArgs = Query[0], Query[1]
-    print("working on: ", InsertSentimentQuery)
+    print("working on: ", InsertSentimentQuery, SentimentQueryArgs)
     cursor.execute(InsertSentimentQuery, SentimentQueryArgs)
+    #cursor.execute(Query)
     connection.commit()
 
 
@@ -247,4 +239,4 @@ atexit.register(connection.close)
 
 if __name__ == "__main__":
   InitializeDBVals()
-  app.run(host='0.0.0.0', port=5000, debug=True)
+  app.run(host='0.0.0.0', port=5000)
