@@ -198,7 +198,7 @@ def WriteToDB(Response, Username):
   categories = Response['CategoryForm']
   TextSentiment = Response['TextSentimentForm']
   ImageTextSentiment = Response['ImageTextSentimentForm']
-  SentimentQueryList = []
+  SentimentQueryArgs = []
 
   if Username not in labellers_DBdict:
     labellers_DBdict[Username] = max(labellers_DBdict.values())+1
@@ -209,22 +209,21 @@ def WriteToDB(Response, Username):
   TextSentimentID = label_type_DBdict[TextSentiment]
   ImageTextSentimentID = label_type_DBdict[ImageTextSentiment]
   CategoryIDs = [label_type_DBdict[category] for category in categories]
+  ArgIDToInsert = [TextSentimentID, ImageTextSentimentID]
+  ArgIDToInsert.extend(CategoryIDs)
 
-  SentimentQueryList.append(TextSentimentID) 
-  SentimentQueryList.append(ImageTextSentimentID) 
-  SentimentQueryList.extend(CategoryIDs)
-  print(SentimentQueryList)
-  QueryHolders = ["(%s, %s, %s)"] * len(SentimentQueryList)
+  for IDToInsert in ArgIDToInsert:
+    SentimentQueryArgs.extend([user_id, ad_id, IDToInsert]) 
+    print(SentimentQueryArgs)
+
+  QueryHolders = ["(%s, %s, %s)"] * len(ArgIDToInsert)
   QueryHolders = ','.join(QueryHolders)
-  QueryString = ','.join(cursor.morgify(QueryHolders, user_id, ad_id, Query) 
-      for Query in SentimentQueryList)
-  print(QueryString)
 
   InsertSentimentQuery = """
     INSERT into labels (user_id, ad_id, label_value_id)
-    VALUES """ + QueryString
+    VALUES """ + QueryHolders
 
-  ThreadQueue.put(InsertSentimentQuery)
+  ThreadQueue.put((InsertSentimentQuery, SentimentQueryArgs))
 
   InsertValueThread = threading.Thread(target=ThreadDBQuery, args=(ThreadQueue, ))
   InsertValueThread.start()
@@ -236,8 +235,9 @@ def WriteToDB(Response, Username):
 def ThreadDBQuery(ThreadQueue):
   while ThreadQueue:
     Query = ThreadQueue.get()
-    print("working on: ", Query)
-    cursor.execute(Query)
+    InsertSentimentQuery, SentimentQueryArgs = Query[0], Query[1]
+    print("working on: ", InsertSentimentQuery)
+    cursor.execute(InsertSentimentQuery, SentimentQueryArgs)
     connection.commit()
 
 
