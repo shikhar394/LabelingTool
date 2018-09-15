@@ -1,28 +1,40 @@
 <html>
   <body>
-    <h1>Username: {{ User }}</h1>
-    {% for ID in SortedIDs %}
-      {% if User in AllData[ID]['MarkedTextImgBy'] %}
-        <h3>ID: {{ ID }} </h3>
-      {% endif %}
-      {% if User not in AllData[ID]['MarkedTextImgBy'] %}
-        <h3>ID: {{ ID }} </h3>
-        <div></div>
-        <h3>Image + Text</h3>
-        <div><img src = {{ AllData[ID]['ImageURL'] }} width='600' height='500'></div>
-        <div><p> {{ AllData[ID]["Text"] }}</p></div>
-        <div></div>
-        <form action="{{url_for('GetInput', username=User, range=Range)}}" method="post">
-          <p>Text Sentiment</p>
-          {{ Form.TextSentimentForm }}
-          <p>Image + Text Sentiment</p>
-          {{ Form.ImageTextSentimentForm }}
-          <p>Ad Category</p>
-          {{ Form.CategoryForm }}
-          {{ Form.ID(value=ID) }}
-          {{ Form.submit }}
-      {% endif %}
-      </form>
-    {% endfor %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <h1>Username: {{ User }}. Ads Marked {{ Count }}/{{ AllAdsCount }}</h1>
+    <h3>ID: {{ ID }} </h3>
+    
+    <div>
+      <img src = {{ AllData[ID]['ImageURL'] }} width='50%' height='50%'>
+    </div>
+    
+    <div>
+      <p> {{ AllData[ID]["Text"] }}</p>
+    </div>
+    
+    <form class="columns" action="{{url_for('GetInput', username=User, ID=ID, AdMarkedCount=Count)}}" method="post">
+      
+      <div class = "col">
+        <p>Text Sentiment</p>
+        {{ Form.TextSentimentForm }}
+      </div>
+
+      <div class = "col">
+        <p>Image + Text Sentiment</p>
+        {{ Form.ImageTextSentimentForm }}
+      </div>
+
+      <div class = "col">
+        <p>Ad Category</p>
+        {{ Form.CategoryForm }}
+      </div>
+
+      {{ Form.ID(value=ID) }}
+
+      <div class="col">
+        {{ Form.submit }}
+      </div>
+
+    </form>
   </body>
 </html>

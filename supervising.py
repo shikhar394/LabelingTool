@@ -8,19 +8,19 @@ from pprint import pprint
 import configparser
 import sys
 
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_wtf import Form
 import psycopg2
 import psycopg2.extras
 from unidecode import unidecode
 from wtforms import (FieldList, FormField, HiddenField, RadioField,
-                     SelectField, StringField, SubmitField, SelectMultipleField)
+                     SelectField, StringField, SubmitField, SelectMultipleField, widgets)
 
 print("""
   ACCESS THE WEBSITE USING
-  localhost:5000/<username>/<range-of-ads>
+  localhost:5000/<username>/
   example:
-  localhost:5000/shikhar/1-20
+  localhost:5000/shikhar/
   """)
 
 if len(sys.argv) < 2:
@@ -31,13 +31,16 @@ config.read(sys.argv[1])
 
 
 TEXTFILE = config['LOCATION']['TEXTFILE']
+ALLADRECORD = config['LOCATION']['ALLADRECORD']
+
 ResponseBackup = int(config['BACKUP']['RESPONSE'])
 
 HOST = config['POSTGRES']['HOST']
 DBNAME_LABELS = config['POSTGRES']['DBNAME_LABELS']
 USER = config['POSTGRES']['USER']
 PASSWORD = config['POSTGRES']['PASSWORD']
-LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME_LABELS, USER, PASSWORD)
+LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (
+    HOST, DBNAME_LABELS, USER, PASSWORD)
 connection = psycopg2.connect(LabelsDBAuthorize)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor) 
 
@@ -52,19 +55,26 @@ ImageTextSentimentOpetions = (('Very Negative ImageText', 'Very Negative'),
     ('Negative ImageText', 'Negative'), ('Neutral ImageText', 'Neutral'), 
     ('Positive ImageText', 'Positive'), ('Very Positive ImageText', 'Very Positive'))
 
-CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'))
+CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), 
+    ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'))
 
 ResponseCount = 0
 
-ProperData = json.load(open(TEXTFILE))
 
 MAINRUNNING = True
 ThreadQueue = queue.Queue()
 
+class MultiCheckBoxField(SelectMultipleField):
+  widget = widgets.ListWidget(prefix_label=False)
+  option_widget = widgets.CheckboxInput()
+
 class Senitments(Form):
-  TextSentimentForm = RadioField("TextSentiment", choices=TextSentimentOptions)
-  ImageTextSentimentForm = RadioField("ImageTextSentiment", choices=ImageTextSentimentOpetions)
-  CategoryForm = RadioField("Category", choices=CategoryOptions)
+  TextSentimentForm = RadioField("TextSentiment", 
+      choices=TextSentimentOptions)
+  ImageTextSentimentForm = RadioField("ImageTextSentiment", 
+      choices=ImageTextSentimentOpetions)
+  CategoryForm = MultiCheckBoxField("Category", 
+      choices=CategoryOptions)
   ID = HiddenField("ID")
   submit = SubmitField("Send")
   
@@ -76,6 +86,12 @@ app.config.update(dict(
 label_type_DBdict = {}
 labellers_DBdict = {}
 categories_DBdict = {}
+ProperData = json.load(open(TEXTFILE))
+AllUserMarkedAds = json.load(open(ALLADRECORD))
+print("Global scope")
+pprint(AllUserMarkedAds)
+AllAds = {k:ProperData[k] for k in ProperData.keys() if ProperData[k]["ImageURL"]}
+SortedIDs = [k for k in sorted(list(AllAds.keys()))]
 
 
 
@@ -96,34 +112,62 @@ def InitializeDBVals():
 
 
 
-@app.route('/<username>/<range>', methods=['get', 'post'])
-def GetInput(username, range):
-  global ResponseCount
-  form = Senitments()
+@app.route('/<username>/', methods=['get', 'post'])
+def RedirectFirstPage(username):
+  global AllUserMarkedAds
+  print(username)
+  username=username.lower()
+  print("In original url", AllUserMarkedAds)
+  if username not in AllUserMarkedAds:
+    AllUserMarkedAds[username] = []
+  AdMarkedCount = GetUserMakedCount(username)
+  print(username)
+  return redirect(url_for('GetInput', username=username, ID=SortedIDs[AdMarkedCount],
+      AdMarkedCount=AdMarkedCount))
 
-  LowRange = int(range.split("-")[0].strip())
-  HighRange = int(range.split('-')[-1].strip())
+
+
+
+
+@app.route('/user?=<username>/ID?=<ID>/Count?=<AdMarkedCount>', methods=['get', 'post'])
+def GetInput(username, ID, AdMarkedCount):
+  form = Senitments()
+  username=username.lower()
+  print("Gets here")
 
   if request.method == 'POST':
-    username=username.lower()
-    Response = request.form.to_dict()
+    Response = request.form.to_dict(flat=False)
     pprint(Response)
-    WriteToDB(Response, username)
+    Response['ID'] = Response['ID'][0]
+    Response['TextSentimentForm'] = Response['TextSentimentForm'][0]
+    Response['ImageTextSentimentForm'] = Response['ImageTextSentimentForm'][0]
+    pprint(Response)
+    #WriteToDB(Response, username)
 
     ProperData[Response['ID']]['MarkedTextBy'].update({username: Response['TextSentimentForm']})
     ProperData[Response['ID']]['MarkedTextImgBy'].update({username: Response['ImageTextSentimentForm']})
     ProperData[Response['ID']]['Category'].update({username: Response['CategoryForm']})
-
+    AllUserMarkedAds[username].append(Response['ID'])
+    AdMarkedCount = GetUserMakedCount(username)
     BackupData()
       
-    return redirect('/'+username+'/'+range)
+    return redirect(url_for('GetInput', username=username, ID=SortedIDs[AdMarkedCount],
+        AdMarkedCount=AdMarkedCount))
 
   return render_template("sentimentanalysis.html", 
-      AllData={k:ProperData[k] for k in ProperData.keys()}, 
-      SortedIDs = [k for k in sorted(list(ProperData.keys()))[LowRange-1:HighRange]],
+      AllData=AllAds, 
+      ID = ID,
+      Count = AdMarkedCount,
+      AllAdsCount = len(ProperData),
       Form=form, 
-      User=username, 
-      Range=range)
+      User=username)
+
+
+
+
+
+def GetUserMakedCount(username):
+  return len(AllUserMarkedAds[username])
 
 
 
@@ -136,7 +180,12 @@ def BackupData():
 
 
 
+
 def UpdateJSON():
+  print("UpdateJSON writing to", ALLADRECORD)
+  pprint(AllUserMarkedAds)
+  with open(ALLADRECORD, 'w') as f:
+    json.dump(AllUserMarkedAds, f, indent=4)
   with open(TEXTFILE, 'w') as f:
     json.dump(ProperData, f, indent=4)
 
@@ -146,9 +195,10 @@ def UpdateJSON():
 
 def WriteToDB(Response, Username):
   ad_id = Response['ID']
-  category = Response['CategoryForm']
+  categories = Response['CategoryForm']
   TextSentiment = Response['TextSentimentForm']
   ImageTextSentiment = Response['ImageTextSentimentForm']
+  SentimentQueryList = []
 
   if Username not in labellers_DBdict:
     labellers_DBdict[Username] = max(labellers_DBdict.values())+1
@@ -158,13 +208,20 @@ def WriteToDB(Response, Username):
   user_id = labellers_DBdict[Username]
   TextSentimentID = label_type_DBdict[TextSentiment]
   ImageTextSentimentID = label_type_DBdict[ImageTextSentiment]
-  CategoryID = label_type_DBdict[category]
+  CategoryIDs = [label_type_DBdict[category] for category in categories]
+
+  SentimentQueryList.append(TextSentimentID, ImageTextSentimentID)
+  SentimentQueryList.extend(CategoryIDs)
+  print(SentimentQueryList)
+  QueryHolders = ["(%s, %s, %s)"] * len(SentimentQueryList)
+  QueryHolders = ','.join(QueryHolders)
+  QueryString = ','.join(cursor.morgify(QueryHolders, user_id, ad_id, Query) 
+      for Query in SentimentQueryList)
+  print(QueryString)
 
   InsertSentimentQuery = """
     INSERT into labels (user_id, ad_id, label_value_id)
-    VALUES (%s, %s, %s), (%s, %s, %s), (%s, %s, %s)""" % (
-    user_id, ad_id, TextSentimentID, user_id, ad_id, ImageTextSentimentID,
-    user_id, ad_id, CategoryID)
+    VALUES """ + QueryString
 
   ThreadQueue.put(InsertSentimentQuery)
 
@@ -183,10 +240,10 @@ def ThreadDBQuery(ThreadQueue):
     connection.commit()
 
 
-atexit.register(UpdateJSON)
+#atexit.register(UpdateJSON)
 atexit.register(connection.close)
 
 
 if __name__ == "__main__":
   InitializeDBVals()
-  app.run(host='0.0.0.0', port=5000)
+  app.run(host='0.0.0.0', port=5000, debug=True)
