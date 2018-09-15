@@ -142,7 +142,7 @@ def GetInput(username, ID, AdMarkedCount):
     Response['TextSentimentForm'] = Response['TextSentimentForm'][0]
     Response['ImageTextSentimentForm'] = Response['ImageTextSentimentForm'][0]
     pprint(Response)
-    #WriteToDB(Response, username)
+    WriteToDB(Response, username)
 
     ProperData[Response['ID']]['MarkedTextBy'].update({username: Response['TextSentimentForm']})
     ProperData[Response['ID']]['MarkedTextImgBy'].update({username: Response['ImageTextSentimentForm']})
@@ -210,7 +210,8 @@ def WriteToDB(Response, Username):
   ImageTextSentimentID = label_type_DBdict[ImageTextSentiment]
   CategoryIDs = [label_type_DBdict[category] for category in categories]
 
-  SentimentQueryList.append(TextSentimentID, ImageTextSentimentID)
+  SentimentQueryList.append(TextSentimentID) 
+  SentimentQueryList.append(ImageTextSentimentID) 
   SentimentQueryList.extend(CategoryIDs)
   print(SentimentQueryList)
   QueryHolders = ["(%s, %s, %s)"] * len(SentimentQueryList)
