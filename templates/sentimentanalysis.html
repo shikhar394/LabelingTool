@@ -1,6 +1,18 @@
 <html>
   <body>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    <script>window.jQuery || document.write("<script src='{{ url_for('static', filename='jquery.js') }}'>\x3C/script>")</script>
+    <script type=text/javascript>
+      $(".input1").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+          {{ Form.submit }}
+        }
+      });
+    </script>
+  
     <h1>Username: {{ User }}. Ads Marked {{ Count }}/{{ AllAdsCount }}</h1>
     <h3>ID: {{ ID }} </h3>
     
@@ -36,5 +48,6 @@
       </div>
 
     </form>
+
   </body>
 </html>

@@ -131,7 +131,6 @@ def GetInput(username, ID, AdMarkedCount):
 
   if request.method == 'POST':
     Response = request.form.to_dict(flat=False)
-    pprint(Response)
     Response['ID'] = Response['ID'][0]
     Response['TextSentimentForm'] = Response['TextSentimentForm'][0]
     Response['ImageTextSentimentForm'] = Response['ImageTextSentimentForm'][0]
@@ -186,7 +185,7 @@ def UpdateJSON():
 
 
 def WriteToDB(Response, Username):
-  ad_id = Response['ID']
+  ad_id = int(Response['ID'])
   categories = Response['CategoryForm']
   TextSentiment = Response['TextSentimentForm']
   ImageTextSentiment = Response['ImageTextSentimentForm']
@@ -239,4 +238,4 @@ atexit.register(connection.close)
 
 if __name__ == "__main__":
   InitializeDBVals()
-  app.run(host='0.0.0.0', port=5000)
+  app.run(host='127.0.0.1', port=5000, debug=True)
