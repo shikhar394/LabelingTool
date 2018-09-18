@@ -45,10 +45,10 @@ def getLabels():
   return Labels, LabelName
 
 if __name__ == '__main__':
-  with open("Users.json") as f:
+  with open("Users.json", 'w') as f:
     json.dump(getUsers(), f, indent=4)
   Labels, LabelName = getLabels()
-  with open("Labels.json") as f:
+  with open("Labels.json", 'w') as f:
     json.dump(Labels, f, indent=4)
-  with open("LabelName.json") as f:
+  with open("LabelName.json", 'w') as f:
     json.dump(LabelName, f, indent=4)
