@@ -34,10 +34,13 @@ def getUsers():
 def getLabels():
   Labels = {}
   LabelName = {}
-  Query = "select l.user_id, lv.valuename, l.ad_id from label_values lv, labels l where l.label_value_id = lv.id"
+  Query = "select l.user_id, lv.valuename, lv.id, l.ad_id from label_values lv, labels l where l.label_value_id = lv.id"
   cursor.execute(Query)
   for row in cursor:
-    Labels[row['user_id']] = {row['id'] : row['ad_id']}
+    if row['user_id'] in Labels:
+      Labels[row['user_id']].append({row['id'] : row['ad_id']})
+    else:
+      Labels[row['user_id']] = []
     LabelName[row['id']] = row['valuename']
   return Labels, LabelName
 
