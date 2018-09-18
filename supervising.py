@@ -56,7 +56,8 @@ ImageTextSentimentOpetions = (('Very Negative ImageText', 'Very Negative'),
     ('Positive ImageText', 'Positive'), ('Very Positive ImageText', 'Very Positive'))
 
 CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), 
-    ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'))
+    ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'),
+    ('Not Political', 'Not Political'))
 
 ResponseCount = 0
 
