@@ -47,13 +47,13 @@ cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 print("Connected to DB")
 app = Flask(__name__)
 
-TextSentimentOptions = (('Very Negative Text', 'Very Negative'), ('Negative Text', 'Negative'), 
-    ('Neutral Text', 'Neutral'), ('Positive Text', 'Positive'), 
-    ('Very Positive Text', 'Very Positive'))
+TextSentimentOptions = (('Very Positive Text', 'Very Positive'), 
+    ('Positive Text', 'Positive'),('Neutral Text', 'Neutral') 
+    ('Negative Text', 'Negative'),('Very Negative Text', 'Very Negative'))
 
-ImageTextSentimentOpetions = (('Very Negative ImageText', 'Very Negative'), 
-    ('Negative ImageText', 'Negative'), ('Neutral ImageText', 'Neutral'), 
-    ('Positive ImageText', 'Positive'), ('Very Positive ImageText', 'Very Positive'))
+ImageTextSentimentOpetions = (('Very Positive ImageText', 'Very Positive'), 
+    ('Positive ImageText', 'Positive'), ('Neutral ImageText', 'Neutral'), 
+    ('Negative ImageText', 'Negative'), ('Very Negative ImageText', 'Very Negative'))
 
 CategoryOptions = (('Donate', 'Donate'), ('Inform', 'Inform'), 
     ('Connect', 'Connect'), ('Move', 'Move'), ('Commercial', 'Commercial'),
