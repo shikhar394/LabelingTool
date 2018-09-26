@@ -17,6 +17,7 @@ if len(sys.argv) < 2:
 config = configparser.ConfigParser()
 config.read(sys.argv[1])
 
+TEXTFILE = config['LOCATION']['TEXTFILE']
 HOST = config['POSTGRES']['HOST']
 AD_DBNAME = config['POSTGRES']['DBNAME_ADS']
 LABEL_DBNAME = config['POSTGRES']['DBNAME_LABELS']
@@ -45,7 +46,7 @@ if __name__ == "__main__":
   labels_cursor.execute(Query)
 
   for id in labels_cursor.fetchall():
-    IDsCovered.add(int(id))
+    IDsCovered.add(int(id['ad_id']))
 
   Query = """
   select archive_id, text, image_url 
@@ -79,5 +80,5 @@ if __name__ == "__main__":
       if len(ID_Text) > 500:
         break
     
-  with open("TextSample.json", 'w') as f:
+  with open(TEXTFILE, 'w') as f:
     json.dump(ID_Text, f, indent=4)
