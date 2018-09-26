@@ -1,11 +1,28 @@
+import atexit
+import configparser
+import csv
 import json
 import os
-import csv
-from pprint import pprint 
+import sys
+from pprint import pprint
 
-Labels = json.load(open(os.path.join('AdRecords', 'NewLabels.json')))
-Users = json.load(open(os.path.join('AdRecords', 'Users.json')))
-LabelName = json.load(open(os.path.join('AdRecords', "LabelName.json")))
+import psycopg2
+import psycopg2.extras
+from unidecode import unidecode
+
+config = configparser.ConfigParser()
+config.read(sys.argv[1])
+
+HOST = config['POSTGRES']['HOST']
+DBNAME_LABELS = config['POSTGRES']['DBNAME_LABELS']
+USER = config['POSTGRES']['USER']
+PASSWORD = config['POSTGRES']['PASSWORD']
+LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (
+    HOST, DBNAME_LABELS, USER, PASSWORD)
+
+connection = psycopg2.connect(LabelsDBAuthorize)
+cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor) 
+
 LabelerID = ['1', '3', '6']
 CategoryNamesList = {11: "Donate", 12: "Inform", 13: "Move", 14: "Connect",
     15: "Commercial", 16: "Not Political"}
@@ -14,7 +31,7 @@ CategoryNamesList = {11: "Donate", 12: "Inform", 13: "Move", 14: "Connect",
 
 
 
-def SelectUserLabels():
+def SelectUserLabels(Labels):
   """
   Weeds out the labelers we don't need to see the labels from. 
   """
@@ -32,7 +49,7 @@ def CategorizeLabels(LabelsToCheck):
   """
   Reads through the labels.json file. 
   Normalizes and categorizes the sentiments based on their label_id value.
-  Restructures the label file as Ad_id: {User_id: sentiment}
+  Restructures the label file as Ad_id: {User_id: sentiment} to allow for majority agreement. 
   """
   Text = {}
   Text_Image = {}
@@ -63,29 +80,29 @@ def CategorizeLabels(LabelsToCheck):
 
 
 
-def CategorizeSentiment(Text):
+def CategorizeSentiment(Payload):
   """
   Decides sentiment for a given ad. 
   Checks for 2/3 or more agreement on a sentiment. Calls SettleClearMajority().
   If a clear majority is not meant, it looks for a "soft majority". Calls SettleSoftMajority()
   """
-  for ID in Text:
+  for ID in Payload:
     SentimentScore = {}
-    for labelers in Text[ID].keys():
-      Sentiment = Text[ID][labelers]
+    for labelers in Payload[ID].keys():
+      Sentiment = Payload[ID][labelers]
       if Sentiment not in SentimentScore:
         SentimentScore[Sentiment] = 0
       SentimentScore[Sentiment] += 1
     
     if len(SentimentScore) < 3:
-      Text[ID]['ClearMajority'] = SettleClearMajority(SentimentScore)
+      Payload[ID]['ClearMajority'] = SettleClearMajority(SentimentScore)
     else:
       Sentiment = SettleSoftMajority(SentimentScore)
       if Sentiment != -1000:
-        Text[ID]['SoftMajority'] = Sentiment
+        Payload[ID]['SoftMajority'] = Sentiment
       else:
-        Text[ID]['NoClearMajority'] = Sentiment
-  return Text
+        Payload[ID]['NoClearMajority'] = Sentiment
+  return Payload
 
 
 
@@ -150,6 +167,54 @@ def ClassifyCategory(Categories):
   return Categories
 
 
+
+
+
+def getUsers():
+  """
+  Gets all the labelers and their IDs from the DB and stores it in AdRecords/Users.json
+  """
+  Users = {}
+  Query = "select * from users"
+  cursor.execute(Query)
+  for row in cursor:
+    Users[row['id']] = row['username']
+  with open(os.path.join('AdRecords', 'Users.json'), 'w') as f:
+    json.dump(Users, f, indent=4)
+  return Users 
+
+
+
+
+
+def getLabels():
+  """
+  Gets all the labelname and ID of labels from DB and stores it in AdRecords/LabelName.json.
+  Gets all the label_id, user_id, ad_id from db and stores it in AdRecords/Label.json.
+  """
+  Labels = {}
+  LabelName = {}
+  Query = "select l.user_id, lv.valuename, lv.id, l.ad_id from label_values lv, labels l where l.label_value_id = lv.id"
+  cursor.execute(Query)
+  for row in cursor:
+    if row['user_id'] in Labels:
+      Labels[row['user_id']].append({row['id'] : row['ad_id']})
+    else:
+      Labels[row['user_id']] = []
+    LabelName[row['id']] = row['valuename']
+
+  with open(os.path.join('AdRecords', 'Labels.json'), 'w') as f:
+    json.dump(Labels, f, indent=4)
+
+  with open(os.path.join('AdRecords', 'LabelName.json'), 'w') as f:
+    json.dump(LabelName, f, indent=4)
+
+  return LabelName, Labels
+
+
+
+
+
 def WriteCSV(Payload, Type, FieldNames):
   with open(Type+'.csv', 'w') as f:
     fieldname = FieldNames
@@ -163,9 +228,14 @@ def WriteCSV(Payload, Type, FieldNames):
     
 
 
+
+
 if __name__ == "__main__":
-  LabelsToCheck = SelectUserLabels()
+  Users = getUsers()
+  LabelName, Labels = getLabels()
+  LabelsToCheck = SelectUserLabels(Labels)
   Text, Text_Image, Categories = CategorizeLabels(LabelsToCheck)
+
   SentimentFieldnames = ['ID', 'damon', 'ratan', 'shikhar', "ClearMajority", "SoftMajority", "NoClearMajority"]
   WriteCSV(CategorizeSentiment(Text), "Text", SentimentFieldnames)
   WriteCSV(CategorizeSentiment(Text_Image), "ImageText", SentimentFieldnames)
