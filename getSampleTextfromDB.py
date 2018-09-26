@@ -18,12 +18,19 @@ config = configparser.ConfigParser()
 config.read(sys.argv[1])
 
 HOST = config['POSTGRES']['HOST']
-DBNAME = config['POSTGRES']['DBNAME']
+AD_DBNAME = config['POSTGRES']['DBNAME_ADS']
+LABEL_DBNAME = config['POSTGRES']['DBNAME_LABELS']
 USER = config['POSTGRES']['USER']
 PASSWORD = config['POSTGRES']['PASSWORD']
-DBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, DBNAME, USER, PASSWORD)
-connection = psycopg2.connect(DBAuthorize)
-cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+DBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, AD_DBNAME, USER, PASSWORD)
+
+
+ads_connection = psycopg2.connect(DBAuthorize)
+ads_cursor = ads_connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+DBAuthorize = "host=%s dbname=%s user=%s password=%s" % (HOST, LABEL_DBNAME, USER, PASSWORD)
+labels_connection = psycopg2.connect(DBAuthorize)
+labels_cursor = labels_connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 
 
@@ -31,6 +38,15 @@ cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 
 if __name__ == "__main__":
+  IDsCovered = set()
+  Query = """
+  select distinct(ad_id) from labels;
+  """
+  labels_cursor.execute(Query)
+
+  for id in labels_cursor.fetchall():
+    IDsCovered.add(int(id))
+
   Query = """
   select archive_id, text, image_url 
   from ads 
@@ -46,12 +62,12 @@ if __name__ == "__main__":
     and a.id in 
     (468135543637922, 177018779651263, 140208533414388, 1672278109547815, 197288211122592,93982622643, 1452020118232532, 1895632567401776, 2135252976548992, 395440887616881, 1777754642278928, 213250312722466, 1189736404501911))
   order by random() 
-  limit 2000;
+  limit 3000;
   """
-  cursor.execute(Query)
+  ads_cursor.execute(Query)
   ID_Text = {}
-  for (ArchiveID, text, image_url) in cursor.fetchall():
-    if image_url.strip() != '' and text.strip() != '':
+  for (ArchiveID, text, image_url) in ads_cursor.fetchall():
+    if int(ArchiveID) not in IDsCovered and image_url.strip() != '' and text.strip() != '':
       if requests.get(image_url).status_code == 200:
         ID_Text[int(ArchiveID)] = {
           'Text': text,
