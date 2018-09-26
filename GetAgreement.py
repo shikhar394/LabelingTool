@@ -23,7 +23,7 @@ LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (
 connection = psycopg2.connect(LabelsDBAuthorize)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor) 
 
-LabelerID = ['1', '3', '6']
+LabelerID = [1, 3, 6]
 CategoryNamesList = {11: "Donate", 12: "Inform", 13: "Move", 14: "Connect",
     15: "Commercial", 16: "Not Political"}
 
@@ -31,14 +31,14 @@ CategoryNamesList = {11: "Donate", 12: "Inform", 13: "Move", 14: "Connect",
 
 
 
-def SelectUserLabels(Labels):
+def SelectUserLabels(Labels, Users):
   """
   Weeds out the labelers we don't need to see the labels from. 
   """
   LabelsToCheck = {}
   for user in Labels.keys():
     if user in LabelerID:
-      LabelsToCheck[Users[user]] = [{int(label.keys()[0]):int(label.values()[0])} for label in Labels[user]]
+      LabelsToCheck[Users[user]] = [{int(list(label.keys())[0]):int(list(label.values())[0])} for label in Labels[user]]
   return LabelsToCheck
 
 
@@ -56,8 +56,8 @@ def CategorizeLabels(LabelsToCheck):
   Categories = {}
   for user in LabelsToCheck:
     for labels in LabelsToCheck[user]:
-      ID = labels.values()[0]
-      Label = labels.keys()[0]
+      ID = list(labels.values())[0]
+      Label = list(labels.keys())[0]
       if Label < 6:
         Label -= 3 # Normalize sentiments on a -2, -1, 0, 1, 2 scale
         if ID not in Text:
@@ -223,7 +223,6 @@ def WriteCSV(Payload, Type, FieldNames):
     for ID in Payload:
       Row = {'ID': ID}
       Row.update(Payload[ID])
-      pprint(Row)
       writer.writerow(Row)
     
 
@@ -233,11 +232,10 @@ def WriteCSV(Payload, Type, FieldNames):
 if __name__ == "__main__":
   Users = getUsers()
   LabelName, Labels = getLabels()
-  LabelsToCheck = SelectUserLabels(Labels)
+  LabelsToCheck = SelectUserLabels(Labels, Users)
   Text, Text_Image, Categories = CategorizeLabels(LabelsToCheck)
-
   SentimentFieldnames = ['ID', 'damon', 'ratan', 'shikhar', "ClearMajority", "SoftMajority", "NoClearMajority"]
-  WriteCSV(CategorizeSentiment(Text), "Text", SentimentFieldnames)
-  WriteCSV(CategorizeSentiment(Text_Image), "ImageText", SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text), os.path.join("CSVFiles", "Text"), SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text_Image), os.path.join("CSVFiles", "ImageText"), SentimentFieldnames)
   CategoryFieldnames = ['ID', 'damon', 'ratan', 'shikhar', 'Category']
-  WriteCSV(ClassifyCategory(Categories), 'Categories', CategoryFieldnames)
+  WriteCSV(ClassifyCategory(Categories), os.path.join("CSVFiles", 'Categories'), CategoryFieldnames)
