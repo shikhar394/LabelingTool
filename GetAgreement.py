@@ -37,7 +37,6 @@ def SelectUserLabels(Labels, Users):
   """
   LabelsToCheck = {}
   for user in Labels.keys():
-    print(user)
     if user in LabelerID:
       LabelsToCheck[Users[user]] = [{int(list(label.keys())[0]):int(list(label.values())[0])} for label in Labels[user]]
   return LabelsToCheck
@@ -224,7 +223,6 @@ def WriteCSV(Payload, Type, FieldNames):
     for ID in Payload:
       Row = {'ID': ID}
       Row.update(Payload[ID])
-      pprint(Row)
       writer.writerow(Row)
     
 
@@ -235,11 +233,9 @@ if __name__ == "__main__":
   Users = getUsers()
   LabelName, Labels = getLabels()
   LabelsToCheck = SelectUserLabels(Labels, Users)
-  pprint(LabelsToCheck)
   Text, Text_Image, Categories = CategorizeLabels(LabelsToCheck)
-  pprint(Text)
   SentimentFieldnames = ['ID', 'damon', 'ratan', 'shikhar', "ClearMajority", "SoftMajority", "NoClearMajority"]
-  WriteCSV(CategorizeSentiment(Text), "Text", SentimentFieldnames)
-  WriteCSV(CategorizeSentiment(Text_Image), "ImageText", SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text), os.path.join("CSVFiles", "Text"), SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text_Image), os.path.join("CSVFiles", "ImageText"), SentimentFieldnames)
   CategoryFieldnames = ['ID', 'damon', 'ratan', 'shikhar', 'Category']
-  WriteCSV(ClassifyCategory(Categories), 'Categories', CategoryFieldnames)
+  WriteCSV(ClassifyCategory(Categories), os.path.join("CSVFiles", 'Categories'), CategoryFieldnames)
