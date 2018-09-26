@@ -20,6 +20,14 @@ PASSWORD = config['POSTGRES']['PASSWORD']
 LabelsDBAuthorize = "host=%s dbname=%s user=%s password=%s" % (
     HOST, DBNAME_LABELS, USER, PASSWORD)
 
+LABELRECORD = config['ADRECORDFILES']['LABELRECORD']
+USERRECORD = config['ADRECORDFILES']['USERRECORD']
+LABELNAMERECORD = config['ADRECORDFILES']['LABELNAMERECORD']
+
+CATEGORIESCSV = config['CSVFILES']['CATEGORIES']
+TEXTCSV = config['CSVFILES']['TEXT']
+IMAGETEXTCSV = config['CSVFILES']['IMAGE_TEXT']
+
 connection = psycopg2.connect(LabelsDBAuthorize)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor) 
 
@@ -179,7 +187,7 @@ def getUsers():
   cursor.execute(Query)
   for row in cursor:
     Users[row['id']] = row['username']
-  with open(os.path.join('AdRecords', 'Users.json'), 'w') as f:
+  with open(USERRECORD, 'w') as f:
     json.dump(Users, f, indent=4)
   return Users 
 
@@ -203,10 +211,10 @@ def getLabels():
       Labels[row['user_id']] = []
     LabelName[row['id']] = row['valuename']
 
-  with open(os.path.join('AdRecords', 'Labels.json'), 'w') as f:
+  with open(LABELRECORD, 'w') as f:
     json.dump(Labels, f, indent=4)
 
-  with open(os.path.join('AdRecords', 'LabelName.json'), 'w') as f:
+  with open(LABELNAMERECORD, 'w') as f:
     json.dump(LabelName, f, indent=4)
 
   return LabelName, Labels
@@ -215,8 +223,8 @@ def getLabels():
 
 
 
-def WriteCSV(Payload, Type, FieldNames):
-  with open(Type+'.csv', 'w') as f:
+def WriteCSV(Payload, Location, FieldNames):
+  with open(Location, 'w') as f:
     fieldname = FieldNames
     writer = csv.DictWriter(f, fieldnames=fieldname, restval='-')
     writer.writeheader()
@@ -235,7 +243,7 @@ if __name__ == "__main__":
   LabelsToCheck = SelectUserLabels(Labels, Users)
   Text, Text_Image, Categories = CategorizeLabels(LabelsToCheck)
   SentimentFieldnames = ['ID', 'damon', 'ratan', 'shikhar', "ClearMajority", "SoftMajority", "NoClearMajority"]
-  WriteCSV(CategorizeSentiment(Text), os.path.join("CSVFiles", "Text"), SentimentFieldnames)
-  WriteCSV(CategorizeSentiment(Text_Image), os.path.join("CSVFiles", "ImageText"), SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text), TEXTCSV, SentimentFieldnames)
+  WriteCSV(CategorizeSentiment(Text_Image), IMAGETEXTCSV, SentimentFieldnames)
   CategoryFieldnames = ['ID', 'damon', 'ratan', 'shikhar', 'Category']
-  WriteCSV(ClassifyCategory(Categories), os.path.join("CSVFiles", 'Categories'), CategoryFieldnames)
+  WriteCSV(ClassifyCategory(Categories), CATEGORIESCSV, CategoryFieldnames)
