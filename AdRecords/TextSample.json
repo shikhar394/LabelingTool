@@ -389,7 +389,8 @@
     "1929014207129253": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Neutral Text"
         },
         "Text": "#KeepFamiliesTogether  bit.ly/SpringfieldIndivisible",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35485229_1929014223795918_3576540578730475520_n.jpg?_nc_cat=0&oh=94e49d6a9c9a14b8181530c1d98cc7aa&oe=5BA0B3A0",
@@ -399,11 +400,15 @@
             ],
             "shikhar": [
                 "Connect"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Neutral ImageText"
         }
     },
     "1990993900970860": {
@@ -487,7 +492,8 @@
     "189473528284519": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Bill Nelson es un luchador que hace lo que se necesita para cumplir sus promesas a las familias de Florida.http://bit.ly/2JnoTp2",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34899857_165029501019902_2925407632392978432_n.jpg?_nc_cat=0&oh=3ece432c78f98573bfdbf6a98083ed73&oe=5B9EBF9B",
@@ -497,11 +503,15 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "254387402017430": {
@@ -789,7 +799,8 @@
     "1915894988708141": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Forests are part of Oregon's heritage, and future. Together, we can conserve them. JOIN US!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36631288_1915895018708138_606279812591386624_n.jpg?_nc_cat=0&oh=b89eb4214201d0e62d3e908adcf2dcdf&oe=5BCFE383",
@@ -801,11 +812,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "197504901093147": {
@@ -1291,7 +1307,8 @@
     "194222621243413": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "Like Trump? You'll love Troy Balderson.  Troy Balderson declared during the May 2018 primary, \"I'll work alongside Trump to implement his agenda.\"  We need lawmakers to challenge Trump, not rubber-stamp his agenda.  Early voting for the OH-12 special election for Congress begins July 10th--an opportunity to stop Balderson and get a Congress that will reunite families now separated in Trump's internment camps.  Please consider a donation to RAICES, a nonprofit agency that promotes justice by providing free and low-cost legal services to underserved immigrant children, families, and refugees in Texas.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/36791544_405472703277689_235814393407864832_n.jpg?_nc_cat=0&oh=57ce117d329274021d5060899e82a271&oe=5BCDDB61",
@@ -1302,11 +1319,16 @@
             "shikhar": [
                 "Donate",
                 "Inform"
+            ],
+            "damon": [
+                "Donate",
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "457346431397523": {
@@ -1541,7 +1563,8 @@
     "193073398217892": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Are you registered to vote yet or do you need to update your registration? Elect the first possible openly gay and latino Democrat to the state legislature. Deadline to vote in the August primary this Sunday, July 22. Register to vote at: http://bit.ly/2ijCDkh",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37385257_193073418217890_1244173578073538560_n.jpg?_nc_cat=0&oh=7a5eeaec55ff36733c32759a0e9ca66c&oe=5BCA26A4",
@@ -1552,11 +1575,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "1789116397835767": {
@@ -1616,7 +1644,8 @@
     "1913608585329173": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Barack Obama features on our Black History Flashcards. We created these to combat the miseducation and suppression of Black achievements around the globe.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37659883_669873460044041_7408269297937547264_n.jpg?_nc_cat=0&oh=90646c5d9f642af546edd8bee8700bbe&oe=5BCDB8C5",
@@ -1626,11 +1655,15 @@
             ],
             "shikhar": [
                 "Commercial"
+            ],
+            "damon": [
+                "Commercial"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "881287432061706": {
@@ -1732,7 +1765,8 @@
     "1926383654089456": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Neutral Text"
         },
         "Text": "We know Coloradans live an active, outdoor lifestyle. That's why the Flood Control District works hard to promote and protect opportunities for metro area residents to connect with the outdoors. Learn how our work provides both flood mitigation and regional trails and recreational access to residents in the 7-county metro area.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37066317_1926383687422786_4302745627801944064_n.jpg?_nc_cat=0&oh=e60000551c18eb4889eb4de70858991f&oe=5BCCCF56",
@@ -1742,11 +1776,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Neutral ImageText"
         }
     },
     "852908724902379": {
@@ -2140,7 +2178,8 @@
     "1914632595494191": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Negative Text"
         },
         "Text": "We want to hear from you! Take our short survey on voting rights and gerrymandering to let us know how these issues are affecting your community: http://bit.ly/2FFSrfC",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/33541506_1426786027467925_7037134890353033216_n.jpg?_nc_cat=0&oh=8ffbd68feffc510370f6fed2a316a4da&oe=5BD03728",
@@ -2151,11 +2190,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Negative ImageText"
+            "shikhar": "Negative ImageText",
+            "damon": "Negative ImageText"
         }
     },
     "2032264130435857": {
@@ -2196,7 +2240,8 @@
     "1922498254467910": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Connect with Nick Forrester for Roane County Trustee.  I ask for your vote and support.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36278935_254852545274334_2946219776894042112_n.jpg?_nc_cat=0&oh=00610d4335e8c0c5620ee1afd45fae22&oe=5BD8A526",
@@ -2207,11 +2252,15 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "477454049343614": {
@@ -2394,7 +2443,8 @@
     "1904911172904583": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Negative Text"
         },
         "Text": "Haitians respond to the Haitian government's decision to raise fuel prices, part of an agreement with the International Monetary Fund.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37066329_1904911206237913_6230580782813937664_n.jpg?_nc_cat=0&oh=894ab4f4638cacb196b0650eadac9ee0&oe=5BD7EA84",
@@ -2404,11 +2454,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Very Negative ImageText"
+            "shikhar": "Very Negative ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "468644750263880": {
@@ -3243,7 +3297,8 @@
     "192203218163822": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Neutral Text"
         },
         "Text": "The Orange County Board of Supervisors will decide TODAY on whether or not to consider a new site for a Veterans Cemetery in Orange County, at a location outside of Irvine.  It's up to us to show them that we are serious about building the cemetery our veterans deserve. Sign on RIGHT NOW to tell the Orange County Board of Supervisors to consider this new site for a veterans cemetery.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36241174_192203251497152_2906796409523011584_n.jpg?_nc_cat=0&oh=f3e55b9371fd5d5f0601ba62d08c1b56&oe=5BA0AB32",
@@ -3254,11 +3309,15 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Neutral ImageText"
         }
     },
     "459873254448533": {
@@ -3492,7 +3551,8 @@
     "1900063516712179": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Negative Text"
         },
         "Text": "While Nancy Pelosi, Chuck Schumer, and Elizabeth Warren are rallying their base to chip away at the 2nd Amendment, we need to DEFEND our freedom to protect our families and ourselves.   We cannot let a few loud talking heads on the Left drown out the voices of the American people.  Sign the petition: THE SECOND AMENDMENT WILL NEVER BE REPEALED. >>",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37601774_1900063543378843_2590293401828065280_n.jpg?_nc_cat=0&oh=39fe4e644ed6d70362b5408ce7a4ea09&oe=5BD65775",
@@ -3503,11 +3563,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Negative ImageText"
         }
     },
     "2043406352653974": {
@@ -3560,7 +3625,8 @@
     "192929031544265": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Put Wyoming First represents a value I want for our state. It means that our politicians put Wyoming families ahead of party, special interests, and personal career.  Show your Wyoming pride. Get your FREE \"Put Wyoming First\" hat today:",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36059304_153273858870345_4078023769120047104_n.jpg?_nc_cat=0&oh=6950bdaede5ab06cf1524ab0879c3645&oe=5BD386A1",
@@ -3570,11 +3636,16 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Very Positive ImageText"
+            "shikhar": "Very Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "1810933539214359": {
@@ -3768,7 +3839,8 @@
     "188924174980403": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Positive Text"
         },
         "Text": "With Special Election Day right around the corner, it's time to start thinking about how and when you're going to vote. Create your voting plan today.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/33356731_188924194980401_882952487584137216_n.jpg?_nc_cat=0&oh=9af372ea1528ec890dd40f8c94f722fb&oe=5BEC7541",
@@ -3779,11 +3851,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "1485602571545035": {
@@ -4426,7 +4503,8 @@
     "1903319743293454": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Positive Text"
         },
         "Text": "Like this page to get news updates from Niagara Falls City Councilman Chris Voccio.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34771655_1903319759960119_8949459157522579456_n.jpg?_nc_cat=0&oh=86d890d3004f867d673a3db8521a7d71&oe=5BA04FC9",
@@ -4436,11 +4514,16 @@
             ],
             "shikhar": [
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "1762022633876743": {
@@ -4768,7 +4851,8 @@
     "194201457892778": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Why buy from a Certified Farm Market? CFMs offer consumers the opportunity to connect directly with the farmer who cultivated their food. CFMs must pass certain criteria to be considered and each farm is evaluated by our CFM coordinator. Visit GFB.org to learn more and find CFMs near you!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34561300_194201474559443_7976118726711836672_n.jpg?_nc_cat=0&oh=1b63a276bc27f67270a373293cb434d5&oe=5BE732E1",
@@ -4778,11 +4862,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "244874872996509": {
@@ -4862,7 +4950,8 @@
     "1926922840661927": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Positive Text"
         },
         "Text": "We must do more to make sure our children have a safe, thriving community to grow up in. Any time we are ranked in the bottom half of a ranking when it comes to our children, it means we must do better. Some suggestions in this article include expanding preschool and lifting children and their families out of poverty: http://wkms.org/post/kentucky-slips-4-spots-37th-us-safe-and-healthy-place-childhood",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34442742_2059982704074522_6231751792762290176_n.jpg?_nc_cat=0&oh=d16a91c89ec097688235d2139d42d58d&oe=5BCFE174",
@@ -4872,11 +4961,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Very Positive ImageText"
+            "shikhar": "Very Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "2227405500812354": {
@@ -5288,7 +5381,8 @@
     "1942888305742438": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "America spends far more on healthcare than any other country, and we're less healthy. It's time to double down on the part of our healthcare system that works best by expanding Medicare to encompass all Americans.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35895392_1942888349075767_7173954054274416640_n.jpg?_nc_cat=0&oh=eff7bb19e92d9dd23334d46d846b0620&oe=5BD36FA8",
@@ -5298,11 +5392,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "279386062632261": {
@@ -7333,7 +7431,8 @@
     "192347661589405": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Neutral Text"
         },
         "Text": "",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/34457584_224863961449768_1103807930806829056_n.jpg?_nc_cat=0&oh=91c4041818b9f1aaad3401e543378b1a&oe=5BD9A4C9",
@@ -7343,11 +7442,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "1746777592105476": {
@@ -7688,7 +7791,8 @@
     "193419338178270": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "That's right - the American economy is stronger than ever! We have Republican tax cuts and deregulation to thank. http://thehill.com/opinion/finance/393648-the-american-economy-is-stronger-than-ever-six-months-after-tax-cuts",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36333972_193419384844932_5130283407951003648_n.jpg?_nc_cat=0&oh=b78a5fc7a480f3607790caf1d46bb562&oe=5BE82EB9",
@@ -7698,11 +7802,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Very Positive ImageText"
+            "shikhar": "Very Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "255875201862824": {
@@ -8058,7 +8166,8 @@
     "189909708396098": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "I recently released my rent platform -- Rent Justice For All -- and it is the most progressive and expansive tenant protection program in the country. My plan will ensure affordable homes to more than three million households while preventing thousands of evictions. Add your name as a citizen endorser of my Rent Justice For All plan and send a message to Albany that you demand action on this issue.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/33283512_121388142072089_6996026435513090048_n.jpg?_nc_cat=0&oh=2ed0e13c41de2900d7dfc689b00f8668&oe=5B9DB4D8",
@@ -8069,11 +8178,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "617906651877052": {
@@ -8100,7 +8214,8 @@
     "1913154875383614": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Positive Text"
         },
         "Text": "One million players' choice! It's time to counterattack! Pick up your weapons and direct your army to destroy your enemies! >>>>>>>>Free to Play<<<<<<<<<<",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34031866_1913154892050279_4767175147486445568_n.jpg?_nc_cat=0&oh=604feb74c46ba57d07fcffa08d9073de&oe=5BD4CF5B",
@@ -8111,11 +8226,15 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Commercial"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "470336966735910": {
@@ -8128,7 +8247,8 @@
     "193264871360151": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Standing for values Baldwin County believes in.  Vote Chris Elliott for State Senate on July 17th.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36929418_193264918026813_1763337207495524352_n.jpg?_nc_cat=0&oh=a04e3eee6541b1510df4ac7415e61b95&oe=5B9DBC2B",
@@ -8139,11 +8259,16 @@
             "shikhar": [
                 "Inform",
                 "Move"
+            ],
+            "damon": [
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "226141068222404": {
@@ -8474,7 +8599,8 @@
     "193848574634612": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Stacey Abrams' victory in the May primary was just the beginning. The road to November will be long and hard, but the next step is one we will take together.   Sign up to join Team Abrams, and together we will take back the governor's mansion and bring progress to Georgia >>",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36688784_193848597967943_6299532548561174528_n.jpg?_nc_cat=0&oh=825a0f57f453e41cb1e60e5569d82995&oe=5BDBE45C",
@@ -8485,11 +8611,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "228778617731604": {
@@ -8800,7 +8931,8 @@
     "192504171413326": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Very Negative Text"
+            "shikhar": "Very Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "Google decided not to work for the US military on AI projects, then rejected non-AI defense contracts. Google intentionally develops some of its internal systems in such a way as to make them unusable for DoD, according to Bloomberg.  Google put its weight behind the \"Russian collusion\" conspiracy theory. Down with Google!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36583867_192504198079990_6044751686948356096_n.jpg?_nc_cat=0&oh=a089ef245fc1048edd50b75abded97b2&oe=5BDFE399",
@@ -8810,11 +8942,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Very Negative ImageText"
+            "shikhar": "Very Negative ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "493944724374505": {
@@ -8907,7 +9043,8 @@
     "1926330967667328": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Once In A Lifetime Opportunity!  Every year the government seizes thousands of properties for taxes owed and has to sell them. How do they do this and how can I get in on this insane investment opportunity?  For the next few days you can learn the step-by-step system that shows how you can get access to this highly classified information. This FREE 2-hour live event is being held in Grapevine, Dallas, Frisco, and Fort Worth, July 15-18 and will hit capacity.  BONUS: All attendees will get a Two DVD Course Set and a FREE smart watch!  Register now at--> https://tinyurl.com/ya2v8j85",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36922610_199250047405582_5394875727214542848_n.jpg?_nc_cat=0&oh=22ff7aa9f8b78c38c1e264dd13b73c5a&oe=5BE5E701",
@@ -8917,11 +9054,16 @@
             ],
             "shikhar": [
                 "Commercial"
+            ],
+            "damon": [
+                "Move",
+                "Commercial"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "540617829674806": {
@@ -8999,7 +9141,8 @@
     "189395965223842": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "Facial recognition is not neutral technology. Amazon should not be selling surveillance equipment to law enforcement. Sign now if you agree!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34270495_189395991890506_4989563176774270976_n.jpg?_nc_cat=0&oh=31064e7d40e00bb610c2afc787b3fc4f&oe=5BCD1791",
@@ -9009,11 +9152,16 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Negative ImageText"
+            "shikhar": "Negative ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "412958339181253": {
@@ -9505,7 +9653,8 @@
     "190751255080842": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Neutral Text"
         },
         "Text": "",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35189886_190751281747506_1270077432073814016_n.jpg?_nc_cat=0&oh=44355461a93fb07f12bbcc89554a3928&oe=5BE155F1",
@@ -9515,17 +9664,22 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Very Negative ImageText"
+            "shikhar": "Very Negative ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "193033338079794": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Negative Text"
         },
         "Text": "Are you pro-life? Please LIKE and SHARE this post if you believe we should elect pro-life individuals to every level of public office.   In Alabama, 12% of all pregnancies are aborted. It's easy to sit back and say, \"We can't do anything about that.  We just need the Supreme Court to overturn Roe Vs. Wade\", but that's not entirely true.  Here are 5 ways we can take action NOW to save lives:  #1. Defund Planned Parenthood at the Federal and State levels.  #2. Oppose all abortion funding, including through government-mandated health insurance coverage.  #3. Oppose euthanasia in its various forms, including physician-assisted suicide. (Being pro-life isn't all about babies. It covers a wide range from conception to natural death.)  #4. Oppose embryonic stem cell research that requires the destruction of a fetus. #5. Require mandatory waiting periods and require that ultrasounds of the fetus be shown to the mother.  Now I realize that as Probate Judge, I will not have the opportunity to vote on pro-life issues.  I fully understand the duties of the job. However, the Probate Judge will interact with local legislators on a routine basis. I can promise you that I will lobby, promote, and support all pro-life legislation to the best of my ability.  My conscience requires it, and my faith demands it.   Please like my page, and consider voting for me in the June 5th Republican Primary!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36485479_193033361413125_9171797051657158656_n.jpg?_nc_cat=0&oh=6304abac8aa551b95ba326a78d1f5c94&oe=5BE71EC5",
@@ -9537,17 +9691,24 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Very Positive ImageText",
-            "shikhar": "Very Positive ImageText"
+            "shikhar": "Very Positive ImageText",
+            "damon": "Negative ImageText"
         }
     },
     "191335364915779": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "We are so honored that you chose us as the, \"Best Home Health\" of 2018! We will continue to strive to be the very best pediatric home health in Texas and hope that you will continue to consider us for this achievement for the many years to come!   Thank you, Angels of Care Pediatric Home Health",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/34719479_1798513763547035_5600452773469487104_n.png?_nc_cat=0&oh=c1c2bd3bc3f2a5328140e015f0610b20&oe=5BA841BF",
@@ -9557,11 +9718,15 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "238277470239021": {
@@ -9660,7 +9825,8 @@
     "1928147557476744": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "Like our page to help stop wealthy families, like Trump's, from receiving giant tax breaks.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/37013483_304523916759051_1778692033406304256_n.jpg?_nc_cat=0&oh=a6987eff095331e5ba5bab0cf170fcd4&oe=5BCD76DA",
@@ -9671,11 +9837,16 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Connect"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Negative ImageText"
+            "shikhar": "Negative ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "2126857914249130": {
@@ -9695,7 +9866,8 @@
     "1936428123314018": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Neutral Text"
         },
         "Text": "Mysterious government agency searching for \"High-Tech Holy Grail\"",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35887163_1936428183314012_1552345826682994688_n.jpg?_nc_cat=0&oh=f6df57c5f367cfc0ebea48c3918da0a4&oe=5BE8FB3E",
@@ -9705,11 +9877,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Negative ImageText"
+            "shikhar": "Negative ImageText",
+            "damon": "Neutral ImageText"
         }
     },
     "266060937272621": {
@@ -9777,7 +9953,8 @@
     "194229524744729": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Very Negative Text"
+            "shikhar": "Very Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "The Trump administration has separated over 2000 children from their parents at the US/Mexico border as part of its cruel immigration policy. Children - including infants and toddlers - are being taken into government custody on their own. Help us fight back.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35605745_194229561411392_3810744355107373056_n.jpg?_nc_cat=0&oh=a141f3ee47f7e34dbbe2642d577b0152&oe=5BD2FBF9",
@@ -9789,11 +9966,16 @@
             "shikhar": [
                 "Donate",
                 "Inform"
+            ],
+            "damon": [
+                "Donate",
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Very Negative ImageText",
-            "shikhar": "Very Negative ImageText"
+            "shikhar": "Very Negative ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "262830444279218": {
@@ -10939,7 +11121,8 @@
     "1903404033283398": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Positive Text"
         },
         "Text": "Happy Summer Solstice! Did you know that air pollution gets worse during these warmer months? Help us fight for cleaner air by donating today! creationcare.org/donate",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35971534_1903404053283396_8617634085927387136_n.jpg?_nc_cat=0&oh=f0ccb4b9f547867bab850de59c9d5126&oe=5BD6F23A",
@@ -10951,11 +11134,16 @@
             "shikhar": [
                 "Donate",
                 "Inform"
+            ],
+            "damon": [
+                "Donate",
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "2030200787054370": {
@@ -11039,7 +11227,8 @@
     "193113021524317": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Very Negative Text"
+            "shikhar": "Very Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "America is better than this.  The policies of the Trump administration -- conducted in our names -- are inhumane and unacceptable. I won't stop speaking out until these children are reunited with their families.  Please join me.  We must be heard.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35521370_193113041524315_414919468863455232_n.jpg?_nc_cat=0&oh=2210d52332da002603d99793d75f3dae&oe=5BA048EE",
@@ -11050,11 +11239,15 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "180128699519077": {
@@ -11582,7 +11775,8 @@
     "189195621742602": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Positive Text"
         },
         "Text": "Enjoyed seeing friends from both law schools I graduated from at the North Carolina Bar Association (NCBA) meetings this weekend.",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/36088170_10155409517691850_7772595465098362880_n.jpg?_nc_cat=0&oh=fd3a3439cf6998c844e14a4000560b39&oe=5BA26666",
@@ -11592,11 +11786,16 @@
             ],
             "shikhar": [
                 "Not Political"
+            ],
+            "damon": [
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "1769303753166214": {
@@ -11641,7 +11840,8 @@
     "1920086284697729": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Neutral Text"
+            "shikhar": "Neutral Text",
+            "damon": "Positive Text"
         },
         "Text": "Join us at Cafe Allegre on Thursday, June 7th for an evening with Amy Siskind, author of The List: A Week-by-Week Reckoning of Trump's First Year.  This event is being sponsored by the Madison and Guilford Democratic Town Committees.  Tickets are $60 per person which includes appetizers and dessert with a cash bar.  http://madisondemocrats.org/event/an-evening-with-amy-siskind/",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/35804598_176261873228710_7516774448305799168_n.jpg?_nc_cat=0&oh=28d767468bc79dd83513a91655b57622&oe=5BE25ADF",
@@ -11654,11 +11854,16 @@
                 "Donate",
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Positive ImageText"
         }
     },
     "2233320583346560": {
@@ -12452,7 +12657,8 @@
     "1914870311899081": {
         "MarkedTextBy": {
             "ratan": "Positive Text",
-            "shikhar": "Very Positive Text"
+            "shikhar": "Very Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "Rep. Coffman stood with taxpayers and voted against reckless government spending!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/34141802_1914870331899079_9142760302482292736_n.jpg?_nc_cat=0&oh=0b9bcd7e649bf485fa2fda03f7aef922&oe=5BA167DD",
@@ -12462,11 +12668,15 @@
             ],
             "shikhar": [
                 "Inform"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Positive ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "176808026507808": {
@@ -12519,7 +12729,8 @@
     "1900903876875381": {
         "MarkedTextBy": {
             "ratan": "Neutral Text",
-            "shikhar": "Positive Text"
+            "shikhar": "Positive Text",
+            "damon": "Very Positive Text"
         },
         "Text": "The Delaware County Republican Party will hold their May GOP meeting on Thursday, May 24th at 7 pm at Knights of Columbus.  Guest speaker will be Zaki Ali, candidate for State Senate District 25.  The Delaware County GOP meetings are free and open to all Republicans. A donation of $5 to help offset the associated costs would be appreciated!",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36388983_1900903900208712_5640043408341860352_n.jpg?_nc_cat=0&oh=040f27b2c06557cf2bf405238c3d0ecd&oe=5BECB192",
@@ -12531,11 +12742,17 @@
             "shikhar": [
                 "Donate",
                 "Inform"
+            ],
+            "damon": [
+                "Donate",
+                "Inform",
+                "Move"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Neutral ImageText",
-            "shikhar": "Positive ImageText"
+            "shikhar": "Positive ImageText",
+            "damon": "Very Positive ImageText"
         }
     },
     "1283603748436378": {
@@ -12666,7 +12883,8 @@
     "193066401394666": {
         "MarkedTextBy": {
             "ratan": "Negative Text",
-            "shikhar": "Negative Text"
+            "shikhar": "Negative Text",
+            "damon": "Very Negative Text"
         },
         "Text": "Senator Michael Lee has voted against allocating enough money to DEQ to fix GenX contamination in North Carolina. Tell him you disagree with his vote. #fixNCwater",
         "ImageURL": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.16868-6/36231201_193066444727995_8511658744310923264_n.jpg?_nc_cat=0&oh=4e0843bccd5908df29774b8fa07c3559&oe=5BA399F4",
@@ -12677,11 +12895,15 @@
             "shikhar": [
                 "Inform",
                 "Connect"
+            ],
+            "damon": [
+                "Inform"
             ]
         },
         "MarkedTextImgBy": {
             "ratan": "Negative ImageText",
-            "shikhar": "Neutral ImageText"
+            "shikhar": "Neutral ImageText",
+            "damon": "Very Negative ImageText"
         }
     },
     "2375607462665961": {
