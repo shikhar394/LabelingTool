@@ -3,9 +3,9 @@ import os
 import csv
 from pprint import pprint 
 
-Labels = json.load(open('Labels.json'))
-Users = json.load(open('Users.json'))
-LabelName = json.load(open("LabelName.json"))
+Labels = json.load(open(os.path.join('AdRecords', 'NewLabels.json')))
+Users = json.load(open(os.path.join('AdRecords', 'Users.json')))
+LabelName = json.load(open(os.path.join('AdRecords', "LabelName.json")))
 LabelerID = ['1', '3', '6']
 CategoryNamesList = {11: "Donate", 12: "Inform", 13: "Move", 14: "Connect",
     15: "Commercial", 16: "Not Political"}
