@@ -48,7 +48,7 @@ print("Connected to DB")
 app = Flask(__name__)
 
 TextSentimentOptions = (('Very Positive Text', 'Very Positive'), 
-    ('Positive Text', 'Positive'),('Neutral Text', 'Neutral') 
+    ('Positive Text', 'Positive'),('Neutral Text', 'Neutral'), 
     ('Negative Text', 'Negative'),('Very Negative Text', 'Very Negative'))
 
 ImageTextSentimentOpetions = (('Very Positive ImageText', 'Very Positive'), 
