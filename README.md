@@ -6,4 +6,4 @@ Only supports working with a dictionary currently.
 
 ## TO RUN
 - Run on server
-- Access using <IP of server>:<port>/<username>
+- Access using {IP of server}:{port}/{username}
